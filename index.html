@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -9,93 +10,1215 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-a,a:visited,a:active,a:link{color:#f0ede8!important;text-decoration:none!important;}
-a:hover{color:#c8b49a!important;}
-html{scroll-behavior:smooth;background:#080808!important;}
-body{background:#080808!important;color:#f0ede8!important;font-family:'DM Mono',monospace;cursor:crosshair;overflow-x:hidden;}
-body::before{content:'';position:fixed;inset:0;background:#080808;pointer-events:none;z-index:-1;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:2rem 4rem;}
-nav .logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.3em;color:#f0ede8!important;}
-nav ul{list-style:none;display:flex;gap:3rem;}
-nav ul a{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#888880!important;}
-nav ul a:hover{color:#f0ede8!important;}
-.hero{height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4rem 5rem;position:relative;overflow:hidden;background:#080808;}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(5rem,14vw,14rem);font-weight:900;line-height:0.85;letter-spacing:-0.02em;color:#f0ede8;}
-.hero h1 em{font-style:italic;color:#c8b49a;}
-.hero-counter{font-size:0.6rem;letter-spacing:0.3em;color:#888880;margin-bottom:2rem;}
-.hero-sub{display:flex;align-items:flex-end;justify-content:space-between;margin-top:3rem;}
-.hero-sub p{font-size:0.7rem;letter-spacing:0.15em;color:#888880;line-height:1.8;max-width:280px;}
-.hero-scroll{font-size:0.6rem;letter-spacing:0.3em;color:#888880;writing-mode:vertical-rl;text-transform:uppercase;display:flex;align-items:center;gap:1rem;}
-.hero-scroll::before{content:'';width:1px;height:60px;background:#888880;}
-.marquee-wrap{overflow:hidden;padding:1.5rem 0;background:#0a0a0a;border-top:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;}
-.marquee-track{display:flex;white-space:nowrap;animation:marquee 30s linear infinite;}
-.marquee-track span{font-family:'Bebas Neue',sans-serif;font-size:0.85rem;letter-spacing:0.3em;color:#222;padding:0 2rem;}
-.marquee-track span.dot{color:#c8b49a;padding:0;}
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-section{padding:8rem 4rem;}
-.section-label{font-size:0.6rem;letter-spacing:0.4em;color:#888880;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:1.5rem;}
-.section-label::before{content:'';width:40px;height:1px;background:#888880;}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start;border-top:1px solid #1a1a1a;background:#080808;}
-.about-left h2{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:400;line-height:1.1;margin-bottom:2rem;color:#f0ede8;}
-.about-left h2 em{font-style:italic;color:#c8b49a;}
-.about-left blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;color:#c8b49a;border-left:1px solid #c8b49a;padding-left:1.5rem;margin:2rem 0;line-height:1.7;}
-.about-right p{font-size:0.8rem;line-height:2;color:#aaa;margin-bottom:1.5rem;}
-.about-specs{margin-top:3rem;display:flex;flex-direction:column;gap:0.8rem;}
-.spec-row{display:flex;justify-content:space-between;padding:0.7rem 0;border-bottom:1px solid #1a1a1a;font-size:0.65rem;letter-spacing:0.1em;}
-.spec-row .label{color:#888880;text-transform:uppercase;}
-.spec-row .val{color:#f0ede8;}
-.work{border-top:1px solid #1a1a1a;background:#080808;}
-.work-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;}
-.work-header h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:400;color:#f0ede8;}
-.photo-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:400px 300px;gap:3px;}
-.photo-cell{overflow:hidden;position:relative;background:#1a1a1a;}
-.photo-cell:first-child{grid-row:1/3;}
-.photo-cell-inner{width:100%;height:100%;background:#111;transition:transform 0.8s ease;}
-.photo-cell:hover .photo-cell-inner{transform:scale(1.05);}
-.photo-cell-label{position:absolute;bottom:1rem;left:1rem;font-size:0.55rem;letter-spacing:0.3em;color:rgba(255,255,255,0.5);text-transform:uppercase;}
-.house{background:#060606;border-top:1px solid #1a1a1a;position:relative;overflow:hidden;}
-.house-inner{display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start;}
-.house-text h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;line-height:1.1;margin-bottom:2rem;color:#f0ede8;}
-.house-text h2 span{color:#c8b49a;}
-.house-text p{font-size:0.78rem;line-height:2;color:#999;margin-bottom:1.2rem;}
-.house-text blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:#c8b49a;padding:1.5rem;border:1px solid #1a1a1a;margin:2rem 0;line-height:1.7;}
-.house-detail-item{padding:2rem;border:1px solid #1a1a1a;margin-bottom:1px;}
-.house-detail-item .num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#1a1a1a;line-height:1;margin-bottom:0.5rem;}
-.house-detail-item h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:400;color:#f0ede8;margin-bottom:0.5rem;}
-.house-detail-item p{font-size:0.65rem;color:#888880;line-height:1.8;}
-.equipment{background:#080808;border-top:1px solid #1a1a1a;padding:5rem 4rem;}
-.equipment-inner{display:flex;align-items:center;gap:6rem;}
-.equipment-text h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:0.05em;line-height:1;margin-bottom:1rem;color:#f0ede8;}
-.equipment-text p{font-size:0.72rem;color:#888880;line-height:1.8;max-width:400px;}
-.cam-row{display:flex;align-items:center;gap:2rem;padding:1.5rem 2rem;border:1px solid #1a1a1a;margin-bottom:1px;}
-.cam-icon{width:40px;height:40px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;color:#888880;}
-.cam-name{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:#f0ede8;}
-.cam-desc{font-size:0.6rem;color:#888880;margin-top:0.2rem;}
-.manifesto{padding:6rem 4rem;background:#050505;border-top:1px solid #1a1a1a;text-align:center;}
-.manifesto h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,3rem);font-style:italic;font-weight:400;line-height:1.5;color:#f0ede8;max-width:800px;margin:0 auto 1.5rem;}
-.manifesto cite{font-size:0.65rem;letter-spacing:0.3em;color:#888880;text-transform:uppercase;font-style:normal;}
-.career{border-top:1px solid #1a1a1a;background:#080808;}
-.career h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:400;margin-bottom:4rem;color:#f0ede8;}
-.timeline-item{display:grid;grid-template-columns:180px 1fr;gap:3rem;padding:2.5rem 0;border-bottom:1px solid #131313;}
-.timeline-year{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:#888880;padding-top:0.2rem;}
-.timeline-content h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.3rem;color:#f0ede8;}
-.timeline-content .role{font-size:0.65rem;letter-spacing:0.15em;color:#c8b49a;text-transform:uppercase;margin-bottom:0.8rem;}
-.timeline-content p{font-size:0.72rem;color:#666;line-height:1.8;max-width:600px;}
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:5rem;border:1px solid #1a1a1a;}
-.skill-cell{padding:2rem 1.5rem;border-right:1px solid #1a1a1a;border-bottom:1px solid #1a1a1a;}
-.skill-cell h4{font-family:'Bebas Neue',sans-serif;font-size:0.9rem;letter-spacing:0.2em;color:#c8b49a;margin-bottom:0.5rem;}
-.skill-cell p{font-size:0.65rem;color:#888880;line-height:1.7;}
-.contact{border-top:1px solid #1a1a1a;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start;background:#080808;}
-.contact h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:400;line-height:1.2;margin-bottom:2rem;color:#f0ede8;}
-.contact h2 em{font-style:italic;color:#c8b49a;}
-.contact-link{display:flex;justify-content:space-between;align-items:center;padding:1.5rem 0;border-bottom:1px solid #1a1a1a;color:#f0ede8!important;}
-.contact-link span:first-child{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;}
-.contact-link span:last-child{font-size:0.65rem;color:#888880;}
-footer{padding:3rem 4rem;border-top:1px solid #111;display:flex;justify-content:space-between;align-items:center;background:#080808;}
-footer .logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:0.3em;color:#888;}
-footer p{font-size:0.6rem;color:#666;letter-spacing:0.15em;}
-.btn{display:inline-flex;align-items:center;gap:1rem;margin-top:2rem;padding:1rem 2rem;border:1px solid #333;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:#f0ede8!important;background:transparent;font-family:'DM Mono',monospace;cursor:pointer;}
-.btn::after{content:'→';}
-@keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  a, a:visited, a:active, a:link { color: #f0ede8 !important; text-decoration: none !important; }
+  a:hover { color: #c8b49a !important; }
+  :root { color-scheme: dark; }
+
+:root {
+–black: #080808;
+–white: #f0ede8;
+–grey: #2a2a2a;
+–mid: #888880;
+–accent: #c8b49a;
+–red: #8b1a1a;
+}
+
+html {
+scroll-behavior: smooth;
+background: #080808 !important;
+background-color: #080808 !important;
+}
+
+body {
+background: #080808 !important;
+background-color: #080808 !important;
+color: #f0ede8 !important;
+font-family: ‘DM Mono’, monospace;
+cursor: crosshair;
+overflow-x: hidden;
+-webkit-text-size-adjust: 100%;
+}
+
+/* NOISE OVERLAY */
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background-image: url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 256 256’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘noise’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.9’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23noise)’ opacity=‘0.04’/%3E%3C/svg%3E”);
+pointer-events: none;
+z-index: 9999;
+opacity: 0.4;
+}
+
+/* ─── NAV ─── */
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 2rem 4rem;
+mix-blend-mode: normal;
+}
+
+nav .logo {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.6rem;
+letter-spacing: 0.3em;
+color: #f0ede8;
+text-decoration: none;
+}
+
+nav ul {
+list-style: none;
+display: flex;
+gap: 3rem;
+}
+
+nav ul a {
+font-family: ‘DM Mono’, monospace;
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+text-transform: uppercase;
+color: #888880 !important;
+text-decoration: none !important;
+transition: color 0.3s;
+}
+
+nav ul a:hover { color: #f0ede8 !important; }
+
+nav .logo { color: #f0ede8 !important; }
+
+/* ─── HERO ─── */
+.hero {
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+padding: 0 4rem 5rem;
+position: relative;
+overflow: hidden;
+}
+
+.hero-bg {
+position: absolute;
+inset: 0;
+background:
+radial-gradient(ellipse 60% 80% at 70% 40%, #1a1a1a 0%, transparent 60%),
+radial-gradient(ellipse 40% 60% at 20% 70%, #0f0f0f 0%, transparent 50%),
+var(–black);
+}
+
+/* Animated vignette lines */
+.hero-lines {
+position: absolute;
+inset: 0;
+overflow: hidden;
+}
+
+.hero-lines::before {
+content: ‘’;
+position: absolute;
+top: -50%;
+left: 40%;
+width: 1px;
+height: 200%;
+background: linear-gradient(to bottom, transparent, rgba(200,180,154,0.15), transparent);
+animation: lineFloat 8s ease-in-out infinite;
+}
+
+.hero-lines::after {
+content: ‘’;
+position: absolute;
+top: -50%;
+left: 60%;
+width: 1px;
+height: 200%;
+background: linear-gradient(to bottom, transparent, rgba(200,180,154,0.08), transparent);
+animation: lineFloat 12s ease-in-out infinite reverse;
+}
+
+@keyframes lineFloat {
+0%, 100% { transform: translateX(0) skewX(-2deg); opacity: 0.5; }
+50% { transform: translateX(20px) skewX(2deg); opacity: 1; }
+}
+
+.hero-counter {
+font-size: 0.6rem;
+letter-spacing: 0.3em;
+color: #888880;
+margin-bottom: 2rem;
+position: relative;
+}
+
+.hero h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(5rem, 14vw, 14rem);
+font-weight: 900;
+line-height: 0.85;
+letter-spacing: -0.02em;
+position: relative;
+animation: fadeUp 1.2s ease forwards;
+opacity: 0;
+animation-delay: 0.3s;
+}
+
+.hero h1 em {
+font-style: italic;
+color: #c8b49a;
+}
+
+.hero-sub {
+display: flex;
+align-items: flex-end;
+justify-content: space-between;
+margin-top: 3rem;
+position: relative;
+animation: fadeUp 1.2s ease forwards;
+opacity: 0;
+animation-delay: 0.7s;
+}
+
+.hero-sub p {
+font-size: 0.7rem;
+letter-spacing: 0.15em;
+color: #888880;
+line-height: 1.8;
+max-width: 280px;
+}
+
+.hero-scroll {
+font-size: 0.6rem;
+letter-spacing: 0.3em;
+color: #888880;
+writing-mode: vertical-rl;
+text-transform: uppercase;
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+
+.hero-scroll::before {
+content: ‘’;
+width: 1px;
+height: 60px;
+background: var(–mid);
+animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+0%, 100% { opacity: 0.3; }
+50% { opacity: 1; }
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(40px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTION BASE ─── */
+section {
+padding: 8rem 4rem;
+}
+
+.section-label {
+font-size: 0.6rem;
+letter-spacing: 0.4em;
+color: #888880;
+text-transform: uppercase;
+margin-bottom: 1rem;
+display: flex;
+align-items: center;
+gap: 1.5rem;
+}
+
+.section-label::before {
+content: ‘’;
+width: 40px;
+height: 1px;
+background: var(–mid);
+}
+
+/* ─── ABOUT ─── */
+.about {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 8rem;
+align-items: start;
+border-top: 1px solid #1a1a1a;
+}
+
+.about-left h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2.5rem, 5vw, 4.5rem);
+font-weight: 400;
+line-height: 1.1;
+margin-bottom: 2rem;
+}
+
+.about-left h2 em {
+font-style: italic;
+color: #c8b49a;
+}
+
+.about-left blockquote {
+font-family: ‘Playfair Display’, serif;
+font-style: italic;
+font-size: 1.1rem;
+color: #c8b49a;
+border-left: 1px solid #c8b49a;
+padding-left: 1.5rem;
+margin: 2rem 0;
+line-height: 1.7;
+}
+
+.about-right p {
+font-size: 0.8rem;
+line-height: 2;
+color: #aaa;
+margin-bottom: 1.5rem;
+}
+
+.about-specs {
+margin-top: 3rem;
+display: flex;
+flex-direction: column;
+gap: 0.8rem;
+}
+
+.spec-row {
+display: flex;
+justify-content: space-between;
+padding: 0.7rem 0;
+border-bottom: 1px solid #1a1a1a;
+font-size: 0.65rem;
+letter-spacing: 0.1em;
+}
+
+.spec-row .label { color: #888880; text-transform: uppercase; }
+.spec-row .val { color: #f0ede8; }
+
+/* ─── WORK / GRID ─── */
+.work { border-top: 1px solid #1a1a1a; }
+
+.work-header {
+display: flex;
+justify-content: space-between;
+align-items: flex-end;
+margin-bottom: 4rem;
+}
+
+.work-header h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2rem, 4vw, 3.5rem);
+font-weight: 400;
+}
+
+.work-header a {
+font-size: 0.65rem;
+letter-spacing: 0.2em;
+color: #888880;
+text-decoration: none;
+text-transform: uppercase;
+border-bottom: 1px solid var(–mid);
+padding-bottom: 2px;
+transition: color 0.3s;
+}
+
+.work-header a:hover { color: #f0ede8; border-color: #f0ede8; }
+
+/* Photo grid using CSS art */
+.photo-grid {
+display: grid;
+grid-template-columns: 2fr 1fr 1fr;
+grid-template-rows: 400px 300px;
+gap: 3px;
+}
+
+.photo-cell {
+overflow: hidden;
+position: relative;
+background: #2a2a2a;
+}
+
+.photo-cell:first-child {
+grid-row: 1 / 3;
+}
+
+.photo-cell-inner {
+width: 100%;
+height: 100%;
+background-size: cover;
+background-position: center;
+filter: grayscale(100%) contrast(1.1);
+transition: transform 0.8s ease, filter 0.5s ease;
+}
+
+.photo-cell:hover .photo-cell-inner {
+transform: scale(1.05);
+filter: grayscale(80%) contrast(1.2);
+}
+
+.photo-cell-label {
+position: absolute;
+bottom: 1rem;
+left: 1rem;
+font-size: 0.55rem;
+letter-spacing: 0.3em;
+color: rgba(255,255,255,0.5);
+text-transform: uppercase;
+}
+
+/* CSS-generated photo placeholders with distinct patterns */
+.p1 { background:
+radial-gradient(ellipse at 30% 60%, #111 0%, #1a1a1a 30%, #0a0a0a 60%, #050505 100%),
+url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘100’ height=‘100’%3E%3Cfilter id=‘n’%3E%3CfeTurbulence baseFrequency=‘0.85’ numOctaves=‘3’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23n)’ opacity=‘0.15’/%3E%3C/svg%3E”);
+}
+.p2 { background: radial-gradient(ellipse at 60% 40%, #1a1a1a 0%, #0d0d0d 50%, #000 100%); }
+.p3 { background: radial-gradient(ellipse at 40% 70%, #161616 0%, #0a0a0a 60%, #020202 100%); }
+.p4 { background: radial-gradient(ellipse at 70% 30%, #111 0%, #080808 50%, #000 100%); }
+.p5 { background: radial-gradient(ellipse at 50% 50%, #1c1c1c 0%, #0e0e0e 50%, #030303 100%); }
+
+/* ─── HOUSE OF SILENT ART ─── */
+.house {
+background: #060606;
+border-top: 1px solid #1a1a1a;
+position: relative;
+overflow: hidden;
+}
+
+.house::before {
+content: ‘HAUS DER LEISEN KUNST’;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) rotate(-8deg);
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(4rem, 12vw, 10rem);
+letter-spacing: 0.1em;
+color: rgba(255,255,255,0.02);
+white-space: nowrap;
+pointer-events: none;
+}
+
+.house-inner {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 8rem;
+align-items: start;
+}
+
+.house-text h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2rem, 4vw, 3.5rem);
+font-weight: 700;
+line-height: 1.1;
+margin-bottom: 2rem;
+}
+
+.house-text h2 span { color: #c8b49a; }
+
+.house-text p {
+font-size: 0.78rem;
+line-height: 2;
+color: #999;
+margin-bottom: 1.2rem;
+}
+
+.house-text blockquote {
+font-family: ‘Playfair Display’, serif;
+font-style: italic;
+font-size: 1rem;
+color: #c8b49a;
+padding: 1.5rem;
+border: 1px solid #1a1a1a;
+margin: 2rem 0;
+line-height: 1.7;
+position: relative;
+}
+
+.house-details {
+display: flex;
+flex-direction: column;
+gap: 2rem;
+}
+
+.house-detail-item {
+padding: 2rem;
+border: 1px solid #1a1a1a;
+position: relative;
+transition: border-color 0.3s;
+}
+
+.house-detail-item:hover { border-color: #c8b49a; }
+
+.house-detail-item .num {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 3rem;
+color: #1a1a1a;
+line-height: 1;
+margin-bottom: 0.5rem;
+}
+
+.house-detail-item h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 1rem;
+font-weight: 400;
+color: #f0ede8;
+margin-bottom: 0.5rem;
+}
+
+.house-detail-item p {
+font-size: 0.65rem;
+color: #888880;
+line-height: 1.8;
+}
+
+/* ─── CV / CAREER ─── */
+.career {
+border-top: 1px solid #1a1a1a;
+}
+
+.career h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2rem, 4vw, 3.5rem);
+font-weight: 400;
+margin-bottom: 4rem;
+}
+
+.timeline {
+display: flex;
+flex-direction: column;
+}
+
+.timeline-item {
+display: grid;
+grid-template-columns: 180px 1fr;
+gap: 3rem;
+padding: 2.5rem 0;
+border-bottom: 1px solid #131313;
+position: relative;
+transition: background 0.3s;
+}
+
+.timeline-item:hover { background: rgba(255,255,255,0.01); }
+
+.timeline-year {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1rem;
+letter-spacing: 0.1em;
+color: #888880;
+padding-top: 0.2rem;
+}
+
+.timeline-content h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.1rem;
+font-weight: 400;
+margin-bottom: 0.3rem;
+}
+
+.timeline-content .role {
+font-size: 0.65rem;
+letter-spacing: 0.15em;
+color: #c8b49a;
+text-transform: uppercase;
+margin-bottom: 0.8rem;
+}
+
+.timeline-content p {
+font-size: 0.72rem;
+color: #666;
+line-height: 1.8;
+max-width: 600px;
+}
+
+.skills-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 1px;
+margin-top: 5rem;
+border: 1px solid #1a1a1a;
+}
+
+.skill-cell {
+padding: 2rem 1.5rem;
+border-right: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+transition: background 0.3s;
+}
+
+.skill-cell:hover { background: rgba(200,180,154,0.03); }
+
+.skill-cell h4 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 0.9rem;
+letter-spacing: 0.2em;
+color: #c8b49a;
+margin-bottom: 0.5rem;
+}
+
+.skill-cell p {
+font-size: 0.65rem;
+color: #888880;
+line-height: 1.7;
+}
+
+/* ─── TOOLS / EQUIPMENT ─── */
+.equipment {
+background: #080808;
+border-top: 1px solid #1a1a1a;
+padding: 5rem 4rem;
+}
+
+.equipment-inner {
+display: flex;
+align-items: center;
+gap: 6rem;
+}
+
+.equipment-text {
+flex: 1;
+}
+
+.equipment-text h3 {
+font-family: ‘Playfair Display’, serif;
+font-size: 0.8rem;
+font-weight: 400;
+font-style: italic;
+color: #888880;
+margin-bottom: 0.5rem;
+}
+
+.equipment-text h2 {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: clamp(2.5rem, 5vw, 4rem);
+letter-spacing: 0.05em;
+line-height: 1;
+margin-bottom: 1rem;
+}
+
+.equipment-text p {
+font-size: 0.72rem;
+color: #888880;
+line-height: 1.8;
+max-width: 400px;
+}
+
+.equipment-cams {
+display: flex;
+flex-direction: column;
+gap: 1px;
+}
+
+.cam-row {
+display: flex;
+align-items: center;
+gap: 2rem;
+padding: 1.5rem 2rem;
+border: 1px solid #1a1a1a;
+transition: border-color 0.3s;
+cursor: default;
+}
+
+.cam-row:hover { border-color: #c8b49a; }
+
+.cam-icon {
+width: 40px;
+height: 40px;
+border: 1px solid #333;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.5rem;
+color: #888880;
+letter-spacing: 0.05em;
+}
+
+.cam-name {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1rem;
+letter-spacing: 0.1em;
+}
+
+.cam-desc {
+font-size: 0.6rem;
+color: #888880;
+margin-top: 0.2rem;
+}
+
+/* ─── MANIFESTO STRIP ─── */
+.manifesto {
+padding: 6rem 4rem;
+background: #050505;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+text-align: center;
+}
+
+.manifesto h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(1.5rem, 4vw, 3rem);
+font-style: italic;
+font-weight: 400;
+line-height: 1.5;
+color: #f0ede8;
+max-width: 800px;
+margin: 0 auto 1.5rem;
+}
+
+.manifesto cite {
+font-size: 0.65rem;
+letter-spacing: 0.3em;
+color: #888880;
+text-transform: uppercase;
+font-style: normal;
+}
+
+/* ─── CONTACT ─── */
+.contact {
+border-top: 1px solid #1a1a1a;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 8rem;
+align-items: start;
+}
+
+.contact h2 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2rem, 4vw, 3.5rem);
+font-weight: 400;
+line-height: 1.2;
+margin-bottom: 2rem;
+}
+
+.contact h2 em { font-style: italic; color: #c8b49a; }
+
+.contact-links {
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+
+.contact-link {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1.5rem 0;
+border-bottom: 1px solid #1a1a1a;
+text-decoration: none;
+color: #f0ede8;
+transition: padding-left 0.3s, color 0.3s;
+}
+
+.contact-link:hover { padding-left: 1rem; color: #c8b49a; }
+
+.contact-link span:first-child {
+font-size: 0.7rem;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+}
+
+.contact-link span:last-child {
+font-size: 0.65rem;
+color: #888880;
+}
+
+.contact-right p {
+font-size: 0.8rem;
+line-height: 2;
+color: #888;
+margin-bottom: 1.5rem;
+}
+
+/* ─── FOOTER ─── */
+footer {
+padding: 3rem 4rem;
+border-top: 1px solid #111;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+footer .logo {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 1.2rem;
+letter-spacing: 0.3em;
+color: #888;
+}
+
+footer p {
+font-size: 0.6rem;
+color: #666;
+letter-spacing: 0.15em;
+}
+
+/* ─── MARQUEE ─── */
+.marquee-wrap {
+overflow: hidden;
+padding: 1.5rem 0;
+background: #0a0a0a;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+
+.marquee-track {
+display: flex;
+white-space: nowrap;
+animation: marquee 30s linear infinite;
+}
+
+.marquee-track span {
+font-family: ‘Bebas Neue’, sans-serif;
+font-size: 0.85rem;
+letter-spacing: 0.3em;
+color: #222;
+padding: 0 2rem;
+}
+
+.marquee-track span.dot {
+color: #c8b49a;
+padding: 0;
+}
+
+@keyframes marquee {
+from { transform: translateX(0); }
+to { transform: translateX(-50%); }
+}
+
+/* ─── CTA BUTTON ─── */
+.btn {
+display: inline-flex;
+align-items: center;
+gap: 1rem;
+margin-top: 2rem;
+padding: 1rem 2rem;
+border: 1px solid #333;
+font-size: 0.65rem;
+letter-spacing: 0.25em;
+text-transform: uppercase;
+color: #f0ede8;
+text-decoration: none;
+transition: border-color 0.3s, color 0.3s;
+cursor: pointer;
+background: transparent;
+font-family: ‘DM Mono’, monospace;
+}
+
+.btn::after { content: ‘→’; }
+.btn:hover { border-color: #c8b49a; color: #c8b49a; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+nav { padding: 1.5rem 1.5rem; }
+nav ul { display: none; }
+section { padding: 5rem 1.5rem; }
+.hero { padding: 0 1.5rem 3rem; }
+.about { grid-template-columns: 1fr; gap: 3rem; }
+.house-inner { grid-template-columns: 1fr; gap: 3rem; }
+.photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+.photo-cell:first-child { grid-row: auto; }
+.contact { grid-template-columns: 1fr; gap: 3rem; }
+.skills-grid { grid-template-columns: 1fr 1fr; }
+.timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+.equipment-inner { flex-direction: column; }
+footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
 </style>
+
+</head>
+<body style="background:#080808!important;background-color:#080808!important;color:#f0ede8!important;">
+
+<!-- NAV -->
+
+<nav>
+  <a style="color:#f0ede8!important;text-decoration:none!important;" href="#" class="logo">Raimondo</a>
+  <ul>
+    <li><a style="color:#f0ede8!important;text-decoration:none!important;" href="#about">Über mich</a></li>
+    <li><a style="color:#f0ede8!important;text-decoration:none!important;" href="#work">Werk</a></li>
+    <li><a style="color:#f0ede8!important;text-decoration:none!important;" href="#house">Das Haus</a></li>
+    <li><a style="color:#f0ede8!important;text-decoration:none!important;" href="#career">Karriere</a></li>
+    <li><a style="color:#f0ede8!important;text-decoration:none!important;" href="#contact">Kontakt</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+
+  <div class="hero-counter">— 001 / Zürich, Switzerland</div>
+
+  <h1>
+    RAI<br>
+    <em>MON</em><br>
+    DO
+  </h1>
+
+  <div class="hero-sub">
+    <p>Art & Noir Photographer<br>
+    where silence turns into images.<br>
+    Founder — House of Silent Art</p>
+    <div class="hero-scroll">Scroll</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>ANALOG PHOTOGRAPHY</span><span class="dot">✦</span>
+    <span>HASSELBLAD 501C</span><span class="dot">✦</span>
+    <span>LEICA Q SNOW</span><span class="dot">✦</span>
+    <span>SCHWARZ-WEISS</span><span class="dot">✦</span>
+    <span>NOIR</span><span class="dot">✦</span>
+    <span>STILLE</span><span class="dot">✦</span>
+    <span>ZÜRICH</span><span class="dot">✦</span>
+    <span>CREATIVE DIRECTION</span><span class="dot">✦</span>
+    <span>HAUS DER LEISEN KUNST</span><span class="dot">✦</span>
+    <!-- repeat for seamless loop -->
+    <span>ANALOG PHOTOGRAPHY</span><span class="dot">✦</span>
+    <span>HASSELBLAD 501C</span><span class="dot">✦</span>
+    <span>LEICA Q SNOW</span><span class="dot">✦</span>
+    <span>SCHWARZ-WEISS</span><span class="dot">✦</span>
+    <span>NOIR</span><span class="dot">✦</span>
+    <span>STILLE</span><span class="dot">✦</span>
+    <span>ZÜRICH</span><span class="dot">✦</span>
+    <span>CREATIVE DIRECTION</span><span class="dot">✦</span>
+    <span>HAUS DER LEISEN KUNST</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+  <div class="about-left">
+    <div class="section-label">Über Raimondo</div>
+    <h2>Ich habe verloren,<br>was laut war.<br>Und gefunden,<br><em>was still ist.</em></h2>
+    <blockquote>
+      „Ich fotografiere ausschließlich in Schwarz-Weiß — weil darin das Licht die einzige Sprache ist."
+    </blockquote>
+    <div class="about-specs">
+      <div class="spec-row">
+        <span class="label">Bürgerlicher Name</span>
+        <span class="val">Remo Schenk</span>
+      </div>
+      <div class="spec-row">
+        <span class="label">Standort</span>
+        <span class="val">Horgen / Zürich</span>
+      </div>
+      <div class="spec-row">
+        <span class="label">Wurzeln</span>
+        <span class="val">Schweiz · Italien</span>
+      </div>
+      <div class="spec-row">
+        <span class="label">Equipment</span>
+        <span class="val">Hasselblad 501C · Leica Q Snow</span>
+      </div>
+      <div class="spec-row">
+        <span class="label">Medium</span>
+        <span class="val">Analog · Schwarz-Weiß</span>
+      </div>
+      <div class="spec-row">
+        <span class="label">Instagram</span>
+        <span class="val">@by_raimondo</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-right">
+    <div class="section-label">Identität</div>
+    <p>Raimondo — das ist der künstlerische Name von Remo Schenk, geboren 1979, aufgewachsen zwischen der Stille der Schweizer Natur und der Intensität seiner italienischen Wurzeln. Ein Kreativer, der über einen persönlichen Umbruch zur Fotografie fand.</p>
+    <p>Seine Bilder entstehen langsam. Mit der Hasselblad 501C und der Leica Q Snow fotografiert er ausschließlich in Schwarz-Weiß. Themen wie Einsamkeit, Licht, Vergänglichkeit und Architektur ziehen sich wie ein roter Faden durch sein Werk.</p>
+    <p>Raimondo ist kein Chronist. Er ist ein Destillateur — er extrahiert aus dem Sichtbaren das, was bleibt, wenn der Lärm verstummt.</p>
+    <a style="color:#f0ede8!important;text-decoration:none!important;" href="#contact" class="btn">Kontakt aufnehmen</a>
+  </div>
+</section>
+
+<!-- WORK -->
+
+<section class="work" id="work">
+  <div class="work-header">
+    <div>
+      <div class="section-label">Ausgewählte Arbeiten</div>
+      <h2>Das Werk</h2>
+    </div>
+    <a style="color:#f0ede8!important;text-decoration:none!important;" href="https://www.instagram.com/by_raimondo" target="_blank">Instagram ansehen</a>
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-cell">
+      <div class="photo-cell-inner p1" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 30%, #080808 60%, #030303 100%);"></div>
+      <span class="photo-cell-label">Prismen & Parallaxen · Serie I</span>
+    </div>
+    <div class="photo-cell">
+      <div class="photo-cell-inner p2" style="background: linear-gradient(160deg, #111 0%, #0e0e0e 50%, #050505 100%);"></div>
+      <span class="photo-cell-label">Stille · 2024</span>
+    </div>
+    <div class="photo-cell">
+      <div class="photo-cell-inner p3" style="background: linear-gradient(200deg, #161616 0%, #0a0a0a 50%, #020202 100%);"></div>
+      <span class="photo-cell-label">Architektur · Zürich</span>
+    </div>
+    <div class="photo-cell">
+      <div class="photo-cell-inner p4" style="background: linear-gradient(100deg, #111 0%, #080808 50%, #010101 100%);"></div>
+      <span class="photo-cell-label">Nebel · Natur</span>
+    </div>
+    <div class="photo-cell">
+      <div class="photo-cell-inner p5" style="background: linear-gradient(220deg, #1c1c1c 0%, #0e0e0e 50%, #030303 100%);"></div>
+      <span class="photo-cell-label">Portrait · Licht</span>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+
+<div class="manifesto">
+  <h2>„Ein Haus für jene Momente, in denen man nichts sagen muss — weil das Licht bereits alles erzählt."</h2>
+  <cite>— Raimondo</cite>
+</div>
+
+<!-- HOUSE OF SILENT ART -->
+
+<section class="house" id="house">
+  <div class="house-inner">
+    <div class="house-text">
+      <div class="section-label">Projekt</div>
+      <h2>Haus der<br><span>leisen Kunst</span></h2>
+      <p>Ein kleines Haus am Waldrand von Zürich. Baujahr 1891. Leicht verborgen, still, fast vergessen. Raimondo möchte es neu beleben — nicht durch Lärm, sondern durch Kultur im leisen Ton.</p>
+      <p>Kein Museum. Keine klassische Galerie. Ein Raum der Begegnung — für Fotografie, Musik, Literatur und stille Dialoge.</p>
+      <blockquote>
+        „Es ist kein Raum, den man betritt, sondern ein Gefühl, das man teilt."
+      </blockquote>
+      <p>Das Projekt richtet sich an die Stadt Zürich und lokale Kulturförderung. Langfristiges Ziel ist ein selbsttragender Betrieb mit analoger Seele.</p>
+    </div>
+
+```
+<div class="house-details">
+  <div class="house-detail-item">
+    <div class="num">01</div>
+    <h3>Galerie Raimondo</h3>
+    <p>Dauerhafte Ausstellung eigener Fotografien — Wechsel alle 3 bis 6 Monate. Analoge Prints, handgefertigte Editionen.</p>
+  </div>
+  <div class="house-detail-item">
+    <div class="num">02</div>
+    <h3>Künstlerresidenzen</h3>
+    <p>Zusammenarbeit mit jungen Zürcher Künstlern. Gastausstellungen, gemeinsame Projekte, kultureller Austausch.</p>
+  </div>
+  <div class="house-detail-item">
+    <div class="num">03</div>
+    <h3>Jazz-Nächte & Lesungen</h3>
+    <p>Kulturelle Veranstaltungen: Lesungen, Jazz- und Klassikabende, Poesieperformances — klein, intim, unvergesslich.</p>
+  </div>
+  <div class="house-detail-item">
+    <div class="num">04</div>
+    <h3>Offene Tage</h3>
+    <p>Regelmäßige Öffnung für Besucher. Niederschwelliger Zugang zu Kunst außerhalb des Stadtzentrums Zürich.</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- EQUIPMENT -->
+
+<div class="equipment">
+  <div class="equipment-inner">
+    <div class="equipment-text">
+      <h3>Die Werkzeuge</h3>
+      <h2>Analog.<br>Präzise.<br>Leise.</h2>
+      <p>Raimondo arbeitet mit zwei Kameras. Beide sind Instrumente — keine Gadgets. Jede Aufnahme ist eine Entscheidung, kein Reflex.</p>
+    </div>
+    <div class="equipment-cams">
+      <div class="cam-row">
+        <div class="cam-icon">⬤</div>
+        <div>
+          <div class="cam-name">Hasselblad 501C</div>
+          <div class="cam-desc">Analog · Mittelformat · Das Herzstück</div>
+        </div>
+      </div>
+      <div class="cam-row">
+        <div class="cam-icon">◯</div>
+        <div>
+          <div class="cam-name">Leica Q Snow Edition</div>
+          <div class="cam-desc">Digital · Festbrennweite · Präzision pur</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MARQUEE 2 -->
+
+<div class="marquee-wrap">
+  <div class="marquee-track" style="animation-direction: reverse; animation-duration: 40s;">
+    <span>CREATIVE DIRECTION</span><span class="dot">✦</span>
+    <span>BUSINESS DEVELOPMENT</span><span class="dot">✦</span>
+    <span>BRANDING</span><span class="dot">✦</span>
+    <span>REAL ESTATE</span><span class="dot">✦</span>
+    <span>DIGITAL STRATEGY</span><span class="dot">✦</span>
+    <span>PHOTOGRAPHY</span><span class="dot">✦</span>
+    <span>ZÜRICH SCHWEIZ</span><span class="dot">✦</span>
+    <span>CREATIVE DIRECTION</span><span class="dot">✦</span>
+    <span>BUSINESS DEVELOPMENT</span><span class="dot">✦</span>
+    <span>BRANDING</span><span class="dot">✦</span>
+    <span>REAL ESTATE</span><span class="dot">✦</span>
+    <span>DIGITAL STRATEGY</span><span class="dot">✦</span>
+    <span>PHOTOGRAPHY</span><span class="dot">✦</span>
+    <span>ZÜRICH SCHWEIZ</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- CAREER -->
+
+<section class="career" id="career">
+  <div class="section-label">Professioneller Werdegang</div>
+  <h2>Karriere &<br>Expertise</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-year">2025 →</div>
+      <div class="timeline-content">
+        <h3>Cozy Stay GmbH</h3>
+        <div class="role">Property & Operations Manager · Hergiswil / Zürich</div>
+        <p>Operativer Aufbau der gesamten Firmenstruktur. Verantwortung für Gästebetreuung, Qualität und operative KPIs. Schnittstelle zwischen Eigentümern, Teams und Technikern. Mitwirkung beim Erreichen des Superhost-Status.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2024</div>
+      <div class="timeline-content">
+        <h3>Selbständiger Immobilienhändler</h3>
+        <div class="role">Akquise · Verhandlung · Vermittlung</div>
+        <p>Akquise, Bewertung und Vermittlung von Wohnimmobilien. Verhandlungsführung und Verkaufsabschlüsse. Erstellung von Exposés und Marketingmaterial.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2006–2023</div>
+      <div class="timeline-content">
+        <h3>Schenk Real Estate GmbH</h3>
+        <div class="role">Inhaber & Geschäftsführer · Zürich</div>
+        <p>17 Jahre unternehmerische Verantwortung. Objekt- und Kundenakquise, Entwicklung der Unternehmensstrategie, On- und Offline-Vermarktung, SEO und digitales Marketing, Erstellung von Verkaufspräsentationen und -verträgen.</p>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-year">2012–2018</div>
+      <div class="timeline-content">
+        <h3>homespeed AG</h3>
+        <div class="role">Co-Founder · Creative Lead · Zürich</div>
+        <p>Mitgründer des Zürcher Immobilienportals. Leitung des Business Development, gesamtes Marketing inkl. Budgetverantwortung, Corporate Design, Social Media, Google Analytics & Adwords, Teamführung und Verkaufsleitung.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-cell">
+      <h4>Creative Direction</h4>
+      <p>Marke, Identität, visuelle Sprache — von der Idee bis zum fertigen Produkt.</p>
+    </div>
+    <div class="skill-cell">
+      <h4>Business Development</h4>
+      <p>Unternehmen aufgebaut, skaliert, verkauft. 15+ Jahre Erfahrung.</p>
+    </div>
+    <div class="skill-cell">
+      <h4>Immobilien</h4>
+      <p>Akquise, Bewertung, Verhandlung, Vermarktung — mit Instinkt und Präzision.</p>
+    </div>
+    <div class="skill-cell">
+      <h4>Analog Photography</h4>
+      <p>Hasselblad 501C · Leica Q · Schwarz-Weiß · Mittelformat.</p>
+    </div>
+    <div class="skill-cell">
+      <h4>Digital Marketing</h4>
+      <p>SEO, Google Analytics, Adwords, Social Media — messbar und strategisch.</p>
+    </div>
+    <div class="skill-cell">
+      <h4>Sprachen</h4>
+      <p>Deutsch & Italienisch (Muttersprache) · Englisch · Spanisch (Grundkenntnisse).</p>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO 2 -->
+
+<div class="manifesto" style="background: #000;">
+  <h2>„Ich erkenne Potenziale, entwickle Ideen und baue daraus funktionsfähige Konzepte, Produkte oder Firmen."</h2>
+  <cite>— Remo Schenk / Raimondo</cite>
+</div>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+  <div>
+    <div class="section-label">Kontakt</div>
+    <h2>Lass uns<br>etwas<br><em>Stilles</em><br>schaffen.</h2>
+    <p style="font-size:0.75rem; color: #666; line-height: 2; margin-top: 1.5rem;">Ob für ein Ausstellungsprojekt, eine kreative Zusammenarbeit, das Haus der leisen Kunst oder ein Gespräch über Bilder, Stille und Licht — Raimondo freut sich.</p>
+  </div>
+
+  <div>
+    <div class="section-label">Direktkontakt</div>
+    <div class="contact-links">
+      <a style="color:#f0ede8!important;text-decoration:none!important;" href="/cdn-cgi/l/email-protection#acdec9c1c3dfcfc4c9c2c7ecc1c982cfc3c1" class="contact-link">
+        <span>E-Mail</span>
+        <span><span class="__cf_email__" data-cfemail="93e1f6fefce0f0fbf6fdf8d3fef6bdf0fcfe">[email&#160;protected]</span></span>
+      </a>
+      <a style="color:#f0ede8!important;text-decoration:none!important;" href="tel:+41774450102" class="contact-link">
+        <span>Telefon</span>
+        <span>+41 77 445 01 02</span>
+      </a>
+      <a style="color:#f0ede8!important;text-decoration:none!important;" href="https://www.instagram.com/by_raimondo" target="_blank" class="contact-link">
+        <span>Instagram</span>
+        <span>@by_raimondo</span>
+      </a>
+      <a style="color:#f0ede8!important;text-decoration:none!important;" href="https://www.byraimondo.com" target="_blank" class="contact-link">
+        <span>Website</span>
+        <span>byraimondo.com</span>
+      </a>
+      <a style="color:#f0ede8!important;text-decoration:none!important;" href="#" class="contact-link">
+        <span>Standort</span>
+        <span>Horgen / Zürich, Schweiz</span>
+      </a>
+    </div>
+
+```
+<div class="contact-right" style="margin-top: 3rem;">
+  <p style="font-size:0.65rem; color: #444; line-height: 2;">Für Anfragen bezüglich des Projekts<br><strong style="color:#666;">Haus der leisen Kunst</strong> bitte<br>direkt per E-Mail melden.</p>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="logo">Raimondo</div>
+  <p>© 2025 Remo Schenk — by_raimondo — Zürich, Schweiz</p>
+  <p>Wo andere Farben suchen, finde ich Tiefe.</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+// Subtle parallax on hero
+window.addEventListener(‘scroll’, () => {
+const scrolled = window.pageYOffset;
+const hero = document.querySelector(’.hero h1’);
+if (hero) {
+hero.style.transform = `translateY(${scrolled * 0.15}px)`;
+}
+});
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = ‘1’;
+entry.target.style.transform = ‘translateY(0)’;
+}
+});
+}, { threshold: 0.1 });
+
+document.querySelectorAll(’.timeline-item, .house-detail-item,
