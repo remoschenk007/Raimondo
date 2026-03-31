@@ -849,7 +849,7 @@ footer { flex-direction: column; gap: 1rem; text-align: center; }
 
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-lines"></div>
+  <canvas id="heroLines" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0.4;"></canvas>
 
   <div class="hero-counter">— 001 / Zürich, Switzerland</div>
 
@@ -1199,25 +1199,59 @@ footer { flex-direction: column; gap: 1rem; text-align: center; }
   <p>Wo andere Farben suchen, finde ich Tiefe.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+  // Animated light lines
+  const canvas = document.getElementById('heroLines');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    const lines = [
+      { x: 0.42, speed: 0.0003, offset: 0, width: 1 },
+      { x: 0.62, speed: 0.0002, offset: 2, width: 0.6 },
+    ];
+    function draw(ts) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      lines.forEach(line => {
+        const x = (line.x + Math.sin(ts * line.speed + line.offset) * 0.04) * canvas.width;
+        const grad = ctx.createLinearGradient(x, 0, x, canvas.height);
+        grad.addColorStop(0, 'rgba(200,180,154,0)');
+        grad.addColorStop(0.3, 'rgba(200,180,154,0.15)');
+        grad.addColorStop(0.5, 'rgba(200,180,154,0.25)');
+        grad.addColorStop(0.7, 'rgba(200,180,154,0.15)');
+        grad.addColorStop(1, 'rgba(200,180,154,0)');
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x + Math.sin(ts * line.speed * 0.5) * 20, canvas.height);
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = line.width;
+        ctx.stroke();
+      });
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  }
 
-// Subtle parallax on hero
-window.addEventListener(‘scroll’, () => {
-const scrolled = window.pageYOffset;
-const hero = document.querySelector(’.hero h1’);
-if (hero) {
-hero.style.transform = `translateY(${scrolled * 0.15}px)`;
-}
-});
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const hero = document.querySelector('.hero h1');
+    if (hero) hero.style.transform = `translateY(${scrolled * 0.15}px)`;
+  });
 
-// Fade-in on scroll
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.style.opacity = ‘1’;
-entry.target.style.transform = ‘translateY(0)’;
-}
-});
-}, { threshold: 0.1 });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
 
-document.querySelectorAll(’.timeline-item, .house-detail-item,
+  document.querySelectorAll('.timeline-item, .house-detail-item, .skill-cell, .cam-row').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    observer.observe(el);
+  });
+</script>
