@@ -219,6 +219,9 @@
     cursor: crosshair;
     overflow-x: hidden;
     -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   /* NOISE OVERLAY */
@@ -240,16 +243,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 4rem;
+    padding: 1.75rem 4rem;
     mix-blend-mode: normal;
+    background: #080808;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    height: 80px;
+    box-sizing: border-box;
   }
 
   nav .logo {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     letter-spacing: 0.3em;
     color: #f0ede8;
     text-decoration: none;
+    line-height: 1;
+    display: flex;
+    align-items: center;
   }
 
   nav ul {
@@ -274,13 +285,15 @@
 
   /* ─── HERO ─── */
   .hero {
-    height: 100vh;
+    min-height: 100vh;
+    height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 0 4rem 5rem;
+    padding: 80px 4rem 5rem;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   .hero-bg {
@@ -1584,17 +1597,27 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div>
-    <div class="section-label">Contact</div>
-    <h2>Let's create<br>something<br><em>silent</em><br>together.</h2>
-    <p style="font-size:0.75rem; color: #666; line-height: 2; margin-top: 1.5rem;">Whether for an exhibition project, a creative collaboration, the House of Silent Art, or a conversation about images, silence and light — Raimondo is looking forward to it.</p>
+    <div class="section-label">Selected Work & Enquiries</div>
+    <h2>I don't take<br>briefs. I take on<br>projects that<br><em>deserve to exist.</em></h2>
+    <p style="font-size:0.75rem; color: #555; line-height: 2.2; margin-top: 2rem; max-width: 420px;">If you're building something that needs to feel different — a brand, a campaign, an identity, a space — I'm open to a conversation.<br><br>I work with founders, galleries, and creative directors who understand that the right image changes everything.</p>
+
+    <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 0.75rem;">
+      <div style="font-size: 0.6rem; letter-spacing: 0.35em; color: #333; text-transform: uppercase;">What I offer</div>
+      <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem;">
+        <span style="font-size: 0.65rem; letter-spacing: 0.15em; color: #888880;">— Art Photography &amp; Visual Direction</span>
+        <span style="font-size: 0.65rem; letter-spacing: 0.15em; color: #888880;">— Creative Consulting &amp; Brand Identity</span>
+        <span style="font-size: 0.65rem; letter-spacing: 0.15em; color: #888880;">— Exhibition &amp; Gallery Projects</span>
+        <span style="font-size: 0.65rem; letter-spacing: 0.15em; color: #888880;">— Editorial &amp; Campaign Direction</span>
+      </div>
+    </div>
   </div>
 
   <div>
     <div class="section-label">Direct Contact</div>
     <div class="contact-links">
-      <a style="color:#f0ede8!important;text-decoration:none!important;" href="/cdn-cgi/l/email-protection#acdec9c1c3dfcfc4c9c2c7ecc1c982cfc3c1" class="contact-link">
+      <a style="color:#f0ede8!important;text-decoration:none!important;" href="mailto:remoschenk@me.com" class="contact-link">
         <span>Email</span>
-        <span><span class="__cf_email__" data-cfemail="93e1f6fefce0f0fbf6fdf8d3fef6bdf0fcfe">[email&#160;protected]</span></span>
+        <span>remoschenk@me.com</span>
       </a>
       <a style="color:#f0ede8!important;text-decoration:none!important;" href="https://www.instagram.com/by_raimondo" target="_blank" class="contact-link">
         <span>Instagram</span>
@@ -1606,12 +1629,13 @@
       </a>
       <a style="color:#f0ede8!important;text-decoration:none!important;" href="#" class="contact-link">
         <span>Location</span>
-        <span>Zürich, Switzerland</span>
+        <span>Europe</span>
       </a>
     </div>
 
-    <div class="contact-right" style="margin-top: 3rem;">
-      <p style="font-size:0.65rem; color: #444; line-height: 2;">For enquiries regarding the project<br><strong style="color:#666;">House of Silent Art</strong> please<br>get in touch directly by email.</p>
+    <div class="contact-right" style="margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid #1a1a1a;">
+      <p style="font-size: 0.6rem; letter-spacing: 0.35em; color: #333; text-transform: uppercase; margin-bottom: 1rem;">A note on collaboration</p>
+      <p style="font-size:0.68rem; color: #555; line-height: 2.2;">I choose who I work with.<br>Not out of arrogance — but because the work demands it.<br>If you feel this is for you, write to me.<br><br><span style="color: #ff2d9b; font-style: italic;">The right projects find the right people.</span></p>
     </div>
   </div>
 </section>
