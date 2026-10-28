@@ -1,37 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- MAIN PORTFOLIO -->
   <url>
-    <loc>https://remoschenk007.github.io/Raimondo/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <loc>https://www.byraimondo.com/</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- IMPRESSUM / LEGAL -->
   <url>
-    <loc>https://remoschenk007.github.io/Raimondo/impressum.html</loc>
-    <lastmod>2026-10-26</lastmod>
+    <loc>https://www.byraimondo.com/impressum.html</loc>
+    <lastmod>2026-10-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
-  </url>
-
-  <!-- JARVIS PROJECT -->
-  <url>
-    <loc>https://remoschenk007.github.io/jarvis/</loc>
-    <lastmod>2026-10-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- STADTPULS -->
-  <url>
-    <loc>https://depuls.ch/</loc>
-    <lastmod>2026-10-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
 
 </urlset>
