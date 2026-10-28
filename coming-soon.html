@@ -1,0 +1,253 @@
+<title>Raimondo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Mono:wght@400;700&display=swap">
+
+<style>
+  /* Dark cinematic — full bleed photo, typographic restraint, one pink accent */
+  :root {
+    --bg: #080808;
+    --fg: #f0ede8;
+    --muted: rgba(240,237,232,0.4);
+    --accent: #ff2d78;
+    --overlay: rgba(8,8,8,0.55);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--fg);
+    overflow: hidden;
+  }
+
+  /* Full-bleed photo */
+  .bg {
+    position: fixed;
+    inset: 0;
+    background-image: url('IMG_2946.jpeg');
+    background-size: cover;
+    background-position: center 40%;
+    filter: grayscale(100%);
+    transform: scale(1.04);
+    animation: slow-drift 20s ease-in-out infinite alternate;
+  }
+
+  @keyframes slow-drift {
+    from { transform: scale(1.04) translateY(0px); }
+    to   { transform: scale(1.04) translateY(-12px); }
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(8,8,8,0.3) 0%,
+      rgba(8,8,8,0.2) 40%,
+      rgba(8,8,8,0.75) 80%,
+      rgba(8,8,8,0.95) 100%
+    );
+  }
+
+  /* Content */
+  .stage {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: max(40px, env(safe-area-inset-left, 0px));
+    padding-right: max(40px, env(safe-area-inset-right, 0px));
+    padding-bottom: max(56px, env(safe-area-inset-bottom, 0px));
+    padding-top: max(40px, env(safe-area-inset-top, 0px));
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(56px, 12vw, 110px);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+    margin-bottom: 28px;
+    text-wrap: balance;
+  }
+
+  h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--fg);
+    opacity: 0.7;
+  }
+
+  .tagline {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(10px, 1.5vw, 12px);
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+    max-width: 36ch;
+    line-height: 1.8;
+  }
+
+  .bottom-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .coords {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .coords span {
+    color: var(--accent);
+  }
+
+  /* Animated dot */
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2.4s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.7); }
+  }
+
+  /* Vertical text — right side */
+  .vert {
+    position: fixed;
+    right: max(24px, env(safe-area-inset-right, 0px));
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: center center;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  /* Top-left mark */
+  .mark {
+    position: fixed;
+    top: max(32px, env(safe-area-inset-top, 0px));
+    left: max(40px, env(safe-area-inset-left, 0px));
+    z-index: 10;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 600px) {
+    .vert { display: none; }
+    h1 { margin-bottom: 20px; }
+    .tagline { margin-bottom: 36px; }
+  }
+
+  /* Grain overlay */
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 5;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+    animation: grain-shift 0.4s steps(1) infinite;
+  }
+
+  @keyframes grain-shift {
+    0%  { transform: translate(0,0); }
+    25% { transform: translate(-3px, 2px); }
+    50% { transform: translate(2px, -3px); }
+    75% { transform: translate(-2px, -1px); }
+  }
+</style>
+
+<!-- Background -->
+<div class="bg"></div>
+<div class="overlay"></div>
+<div class="grain"></div>
+
+<!-- Top mark -->
+<div class="mark">Raimondo — byraimondo.com</div>
+
+<!-- Vertical side text -->
+<div class="vert">House of Silent Art · 2026</div>
+
+<!-- Main content -->
+<div class="stage">
+  <p class="eyebrow">Something is coming</p>
+
+  <h1>Still.<br><em>Not yet.</em><br>Soon.</h1>
+
+  <p class="tagline">
+    A new body of work.<br>
+    Shot in silence. Printed in black & white.<br>
+    Arriving when it's ready.
+  </p>
+
+  <div class="bottom-row">
+    <div class="coords">
+      <div><span>38°53'N</span> · <span>8°49'E</span></div>
+
+    </div>
+    <div class="status">
+      <div class="dot"></div>
+      Working from the island
+    </div>
+  </div>
+</div>
